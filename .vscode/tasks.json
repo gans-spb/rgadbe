@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Debug",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "-o",
+                "debug",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+
+        //Publish build
+        {
+            "label": "Publish Release",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "publish",
+                "-c",
+                "Release",
+                "-o",
+                "publish",
+                "-r",
+                "win-x64",
+                "--self-contained"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "presentation": {"reveal": "silent"}
+            //,"dependsOn": ["Remove publish"]
+        },
+        {
+            "label": "Remove publish",
+            "type": "shell",
+            "command": "Remove-Item",
+            "args": [
+                "publish",
+                "-Recurse"
+            ],
+            "group": "build"
+            //,"dependsOn": ["Clean"]
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "clean",
+                "-c",
+                "Release",
+                "-o",
+                "publish"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+            //,"dependsOn": ["Restore"]
+        },
+        {
+            "label": "Restore",
+            "type": "shell",
+            "command": "dotnet restore",
+            "problemMatcher": []
+            //,"dependsOn": [ "Clean"]
+        }
+
+    ]
+}
