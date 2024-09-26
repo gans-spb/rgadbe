@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Dbg dotnet",
+            "type": "coreclr",
+            "request": "launch",
+            
+            "preLaunchTask": "Build Debug",
+            "program": "${workspaceFolder}/debug/rgadbe.dll",
+            //"args": ["--db=rga.db","--com=COM8","--boot=true", "--renew=true"],
+            //"args": ["--com=COM4"],
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Rlz dotnet",
+            "type": "coreclr",
+            "request": "launch",
+            
+            "preLaunchTask": "Publish Release",
+            "program": "${workspaceFolder}/publish/rgadbe.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}/publish/",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+    ]
+}
