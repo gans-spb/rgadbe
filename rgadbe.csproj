@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>ExtorrIoffe.ico</ApplicationIcon>
+
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <!-- Build singlefile standalone -->
+  <PropertyGroup Condition="$(Configuration.Contains(Release))">
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <!-- Seems not works properly -->
+  <Target Name="CopyAssets" AfterTargets="publish">
+    <Copy SourceFiles="Extorr ASCII Firmware V0.12.pdf" DestinationFolder="$(PublishDir)"  SkipUnchangedFiles="true" />
+    <Copy SourceFiles="RGA DBE manual.pdf" DestinationFolder="$(PublishDir)" />
+  </Target>
+
+<ItemGroup>
+    <!-- Assembly resourses -->
+    <EmbeddedResource Include="ExtorrIoffe.ico" />
+    <EmbeddedResource Include="IoffeExtor.png" />
+    <EmbeddedResource Include="qpbox-Aug23.l2" />
+    
+    <!-- MS additional packages -->
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
+
+    <!-- 3rd party packages -->
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    
+</ItemGroup>
+
+</Project>

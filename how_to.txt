@@ -1,0 +1,35 @@
+
+1. Install Dotnet
+dotnet.microsoft.com/en-us/download
+dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.201-windows-x64-binaries
+dotnet-sdk-8.0.201-win-x64.zip
+copy to {an_folder1}\dotnet
+add this path to Env
+
+2. Install VS Code
+code.visualstudio.com/#alt-downloads
+VSCode-win32-x64-1.86.2.zip
+copy to {an_folder2}\vscode
+
+install extensions:
+coreclr (C#, Microsoft) //support "type": "coreclr" at launch json
+
+
+3. Copy Rgdbe project
+copy to {an_folder3}\rgadbe, or git-clone
+  *.cs, rgdbe.vsproj, .vscode(launch.json,tasks.json),
+  *.ico, *.png, qpbox-Aug23.l2, *.pdf
+
+4. Install COM port driver, if need
+as example Waveshare USBto232/485 adapter
+ftdichip.com/old2020/Drivers/VCP.htm
+remember COM port umber, 
+u can setup it at launch.json "args": ["--com=COM4"]
+or rgadbe.exe --com COM1
+
+5. Compile
+Start VSCode, OpenFolder {an_folder3}\rgadbe, Run
+
+
+Ctri+, "csharp.referencesCodeLens.enabled": false
+Exception thrown: 'System.TimeoutException' in System.IO.Ports.dll - its Ok for serial.Read(timeout)
